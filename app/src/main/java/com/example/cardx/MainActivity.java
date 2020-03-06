@@ -1,6 +1,7 @@
 package com.example.cardx;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -9,12 +10,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,MyDialog.OnCenterItemClickListener {
+    private  MyDialog myDialog;
+
+    private  FloatingActionButton boardButton;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,6 +49,10 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+        boardButton = (FloatingActionButton) findViewById(R.id.fab_add_board_main_activity);
+        boardButton.setOnClickListener(this);
+        myDialog = new MyDialog(this,R.layout.dialog_display_board,new int[]{R.id.btn_build,R.id.btn_cancel});
+        myDialog.setOnCenterItemClickListener((MyDialog.OnCenterItemClickListener) this);
     }
 
     @Override
@@ -62,5 +71,35 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 自定义dialog_display_board 布局
+     */
+    private void diyDialog(){
+        AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(MainActivity.this,R.style.MyDialog);
+        alterDiaglog.setView(R.layout.dialog_display_board);
+        AlertDialog dialog = alterDiaglog.create();
+        dialog.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_add_board_main_activity:
+                myDialog.show();
+                break;
+        }
+    }
+
+    @Override
+    public void OnCenterItemClick(MyDialog dialog, View view) {
+        switch (view.getId()){
+            case R.id.btn_build:
+                Toast.makeText(getApplicationContext(),"创建成功",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
     }
 }
