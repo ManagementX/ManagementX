@@ -19,7 +19,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,MyDialog.OnCenterItemClickListener {
     private  MyDialog myDialog;
 
-    private  FloatingActionButton boardButton;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-        boardButton = (FloatingActionButton) findViewById(R.id.fab_add_board_main_activity);
+        FloatingActionButton boardButton = (FloatingActionButton) findViewById(R.id.fab_add_board_main_activity);
         boardButton.setOnClickListener(this);
         myDialog = new MyDialog(this,R.layout.dialog_display_board,new int[]{R.id.btn_build,R.id.btn_cancel});
         myDialog.setOnCenterItemClickListener((MyDialog.OnCenterItemClickListener) this);
@@ -85,21 +84,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.fab_add_board_main_activity:
-                myDialog.show();
-                break;
+        if (v.getId() == R.id.fab_add_board_main_activity)
+        {
+            myDialog.show();
         }
     }
 
     @Override
     public void OnCenterItemClick(MyDialog dialog, View view) {
-        switch (view.getId()){
-            case R.id.btn_build:
-                Toast.makeText(getApplicationContext(),"创建成功",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
+        if (view.getId() == R.id.btn_build)
+        {
+            Toast.makeText(getApplicationContext(), "创建成功", Toast.LENGTH_SHORT).show();
         }
     }
 }

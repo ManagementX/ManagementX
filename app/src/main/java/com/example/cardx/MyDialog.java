@@ -27,6 +27,7 @@ public class MyDialog extends Dialog implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         //提前设置Dialog的一些样式
         Window dialogWindow = getWindow();
+        if (dialogWindow!=null)
         dialogWindow.setGravity(Gravity.CENTER);//设置dialog显示居中
         //dialogWindow.setWindowAnimations();设置动画效果
         setContentView(layoutResID);

@@ -4,4 +4,8 @@
     <string name="card">卡片</string>
     <string name="board_personal">个人看板</string>
     <string name="search">搜索</string>
+    <string name="create_board">创建看板</string>
+    <string name="board_name">看板名称</string>
+    <string name="cancel">取消</string>
+    <string name="create">创建</string>
 </resources>
