@@ -1,0 +1,2 @@
+rootProject.name='CardX'
+include ':app'

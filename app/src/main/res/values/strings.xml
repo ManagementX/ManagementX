@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CardX</string>
+    <string name="board">看板</string>
+    <string name="card">卡片</string>
+    <string name="board_personal">个人看板</string>
+    <string name="search">搜索</string>
+</resources>
