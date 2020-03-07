@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="311dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/create_card"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp" />
+        <!--卡片名称-->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_card_name"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="@string/card_name"
+            app:met_baseColor="@color/colorPrimary"
+            app:met_clearButton="true"
+            app:met_errorColor="#000000"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="请输入卡片名称"
+            app:met_primaryColor="@color/colorPrimary"
+            app:met_singleLineEllipsis="true" />
+        <!--卡片描述-->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_card_describe"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="卡片描述"
+            app:met_baseColor="@color/colorPrimary"
+            app:met_clearButton="true"
+            app:met_errorColor="#000000"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="请输入卡片名称"
+            app:met_primaryColor="@color/colorPrimary"
+            app:met_singleLineEllipsis="true" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_cancel_1"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/cancel"
+                android:textSize="12sp"
+                android:layout_marginStart="150dp" />
+            <Button
+                android:id="@+id/btn_build_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#0056d3"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:text="@string/create"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

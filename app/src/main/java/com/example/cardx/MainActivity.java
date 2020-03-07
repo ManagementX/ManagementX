@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,MyDialog.OnCenterItemClickListener {
-    private  MyDialog myDialog;
-
+    private  MyDialog myDialog_board;
+    private  MyDialog myDialog_card;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -48,10 +48,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+        /**
+         * 创建看板
+         */
         FloatingActionButton boardButton = (FloatingActionButton) findViewById(R.id.fab_add_board_main_activity);
         boardButton.setOnClickListener(this);
-        myDialog = new MyDialog(this,R.layout.dialog_display_board,new int[]{R.id.btn_build,R.id.btn_cancel});
-        myDialog.setOnCenterItemClickListener((MyDialog.OnCenterItemClickListener) this);
+        myDialog_board = new MyDialog(this,R.layout.dialog_display_board,new int[]{R.id.btn_build,R.id.btn_cancel});
+        myDialog_board.setOnCenterItemClickListener((MyDialog.OnCenterItemClickListener) this);
+        /**
+         * 创建卡片
+         */
+        FloatingActionButton cardButton = (FloatingActionButton) findViewById(R.id.fab_add_card_main_activity);
+        cardButton.setOnClickListener(this);
+        myDialog_card = new MyDialog(this,R.layout.dialog_card,new int[]{R.id.btn_build_1,R.id.btn_cancel_1});
+        myDialog_card.setOnCenterItemClickListener((MyDialog.OnCenterItemClickListener)this);
     }
 
     @Override
@@ -73,28 +83,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 自定义dialog_display_board 布局
+     * 点击创建看板和卡片
+     * @param v
      */
-    private void diyDialog(){
-        AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(MainActivity.this,R.style.MyDialog);
-        alterDiaglog.setView(R.layout.dialog_display_board);
-        AlertDialog dialog = alterDiaglog.create();
-        dialog.show();
-    }
-
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.fab_add_board_main_activity)
-        {
-            myDialog.show();
+        if (v.getId() == R.id.fab_add_board_main_activity) {
+            myDialog_board.show();
+        }else if(v.getId() == R.id.fab_add_card_main_activity){
+            myDialog_card.show();
         }
+
     }
 
+    /**
+     * 接口
+     * 点击dialog中创建
+     * btn_build 代表看板的创建
+     * btn_card 代表卡片的创建
+     * @param dialog
+     * @param view
+     */
     @Override
     public void OnCenterItemClick(MyDialog dialog, View view) {
-        if (view.getId() == R.id.btn_build)
-        {
-            Toast.makeText(getApplicationContext(), "创建成功", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.btn_build) {
+            Toast.makeText(getApplicationContext(), "创建看板成功", Toast.LENGTH_SHORT).show();
+        }else if(view.getId() == R.id.btn_build_1){
+            Toast.makeText(getApplicationContext(),"创建卡片成功",Toast.LENGTH_SHORT).show();
         }
     }
 }
